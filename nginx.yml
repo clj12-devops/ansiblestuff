@@ -1,0 +1,11 @@
+- name: Install that NGINX dude
+  hosts: azure
+  become: yes
+  tasks:
+  - name: 
+    package: pkg=nginx state=installed
+    notify:
+       - start nginx
+  handlers:
+  - name: start nginx
+    service: name=nginx state=started
